@@ -50,9 +50,12 @@ function createProduct() {
     </td>`
   );
 
+  const removeProductBtn = newProduct.querySelector('.btn-remove');
+  removeProductBtn.addEventListener('click', removeProduct);
+
   document.querySelector('.product-name input').value = '';
   document.querySelector('.product-price input').value = 0;
-
+  
   return ProductParent.appendChild(newProduct)
 }
 
