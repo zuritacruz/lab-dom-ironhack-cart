@@ -1,7 +1,7 @@
 // ITERATION 1
 
 function updateSubtotal(product) {
-  const price = product.querySelector('.price span').innerHTML;
+  const price = Number(product.querySelector('.price span').innerHTML);
   const quantity = product.querySelector('.quantity input').value;
   const subtotal = price * quantity;
   
@@ -33,14 +33,15 @@ function removeProduct(event) {
 function createProduct() {
   const ProductParent = document.querySelector('.product').parentNode;
   const newProductName = document.querySelector('.product-name input').value;
-  const newProductPrice = document.querySelector('.product-price input').value;
+  const newProductPrice = Number(document.querySelector('.product-price input').value);
 
   let newProduct = document.createElement('tr');
   newProduct.classList.add('product');
-  newProduct.innerHTML = (`<td class="name">
-    <span>${newProductName}</span>
+  newProduct.innerHTML = (
+    `<td class="name">
+      <span>${newProductName}</span>
     </td>
-    <td class="price">$<span>${newProductPrice}</span></td>
+    <td class="price">$<span>${newProductPrice.toFixed(2)}</span></td>
     <td class="quantity">
       <input type="number" value="0" min="0" placeholder="Quantity" />
     </td>
@@ -55,7 +56,7 @@ function createProduct() {
 
   document.querySelector('.product-name input').value = '';
   document.querySelector('.product-price input').value = 0;
-  
+ 
   return ProductParent.appendChild(newProduct)
 }
 
